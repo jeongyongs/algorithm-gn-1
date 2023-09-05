@@ -1,8 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        double[] input = { 0.90625, 19.6875 };
-        String[] output = { "0.11101", "10011.1011" };
+        double[] input = {0.90625, 19.6875};
+        String[] output = {"0.11101", "10011.1011"};
 
         System.out.printf("Out of %d Cases, %1.0f were correct", input.length, test(input, output));
     }
