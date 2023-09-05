@@ -1,4 +1,4 @@
-public class Main    {
+public class Main {
 
     public static void main(String[] args) {
         int[] input = {0, 3, 2, 624, 339, 13, 45232};
@@ -14,7 +14,7 @@ public class Main    {
             System.out.printf("Case %d %n", i);
 
             String correct = output[i];
-            System.out.printf("Input : %d \t -> Expected : %s %n",input[i], output[i]);
+            System.out.printf("Input : %d \t -> Expected : %s %n", input[i], output[i]);
 
             String str = solution(input[i]);
             System.out.printf("Your Answer : %s %n", str);
@@ -28,15 +28,20 @@ public class Main    {
     }
 
     public static String solution(int input) {
-        String anwser = "";
+        String result = "";
+        int current = input;
 
-        do {
-            anwser = (input % 2) + anwser;
-            input /= 2;
-        } while (input > 0);
+        if (current < 2) {
+            return "0";
+        }
 
-        return anwser;
+        while (current >= 2) {
+            result = (current % 2) + result;
+            current /= 2;
+        }
+        result = current + result;
+
+        return result;
     }
-    
-}
 
+}
