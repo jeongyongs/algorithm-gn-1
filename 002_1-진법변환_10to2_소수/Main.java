@@ -1,4 +1,4 @@
-public class Main    {
+public class Main {
 
     public static void main(String[] args) {
         double[] input = { 0.90625, 19.6875 };
@@ -14,7 +14,7 @@ public class Main    {
             System.out.printf("Case %d %n", i);
 
             String correct = output[i];
-            System.out.printf("Input : %f \t -> Expected : %s %n",input[i], output[i]);
+            System.out.printf("Input : %f \t -> Expected : %s %n", input[i], output[i]);
 
             String str = solution(input[i]);
             System.out.printf("Your Answer : %s %n", str);
@@ -26,5 +26,41 @@ public class Main    {
 
         return score;
     }
-}
 
+    public static String solution(double input) {
+        int integerArea = (int) input;
+        double floatArea = input - integerArea;
+
+        return convertInteger(integerArea) + "." + convertFloat(floatArea);
+    }
+
+    public static String convertInteger(int input) {
+        String result = "";
+        int current = input;
+
+        if (current < 2) {
+            return "0";
+        }
+
+        while (current >= 2) {
+            result = (current % 2) + result;
+            current /= 2;
+        }
+        result = current + result;
+
+        return result;
+    }
+
+    public static String convertFloat(double input) {
+        String result = "";
+        double current = input;
+
+        while (current > 0) {
+            current *= 2;
+            result += (int) current;
+            current -= (int) current;
+        }
+
+        return result;
+    }
+}
