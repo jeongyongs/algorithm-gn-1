@@ -28,8 +28,15 @@ public class Main    {
     }
 
     public static String solution(int input) {
+        String anwser = "";
 
-        return null;
+        do {
+            anwser = (input % 2) + anwser;
+            input /= 2;
+        } while (input > 0);
+
+        return anwser;
     }
+    
 }
 
