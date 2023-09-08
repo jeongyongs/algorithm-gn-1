@@ -24,17 +24,34 @@ public class Main {
     }
 
     private static int solution(int first, int second) {
-        return flipNumber(flipNumber(first) + flipNumber(second));
+        return flipNumberBySplit(flipNumberBySplit(first) + flipNumberBySplit(second));
     }
 
-    private static int flipNumber(int input) {
+    private static int flipNumberBySplit(int input) {
         String result = "";
         String inputString = String.valueOf(input);
         String[] splittedString = inputString.split("");
 
         for (int i = 0; i < splittedString.length; i++) {
             result += splittedString[splittedString.length - i - 1];
+            // 마지막 인덱스부터 불러오는 대신 앞에서부터 스택에 담는다면?
+            // 스택에 담는 과정과 꺼내는 과정, 총 두 번의 루프를 돌겠네.
+            // 지금 방식보다 더 나은 점이 있나?
         }
+
+        return Integer.parseInt(result);
+    }
+
+    private static int flipNumberByDivide(int input) {
+        String result = "";
+        int last = input;
+
+        while (last > 9) {
+            int digit = last % 10;
+            last /= 10;
+            result += digit;
+        }
+        result += last;
 
         return Integer.parseInt(result);
     }
