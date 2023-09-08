@@ -1,19 +1,14 @@
 public class Main {
 
     private static double correctCount = 0;
-
-    private static final String[][] TESTCASES = new String[][] {
-            {"123", "123", "246"},
-            {"1000", "1", "2"},
-            {"456", "789", "1461"},
-            {"5", "5", "1"},
-            {"11112", "54321", "65433"},
-            {"3829", "1300", "4139"}
-    };
+    private static final String[][] TESTCASES =
+            new String[][] {{"123", "123", "246"}, {"1000", "1", "2"}, {"456", "789", "1461"},
+                    {"5", "5", "1"}, {"11112", "54321", "65433"}, {"3829", "1300", "4139"}};
 
     public static void main(String[] args) {
         for (int i = 0; i < TESTCASES.length; i++)
-            System.out.println("Testcase " + i + " = " + test(TESTCASES[i][0], TESTCASES[i][1], TESTCASES[i][2]));
+            System.out.println("Testcase " + i + " = "
+                    + test(TESTCASES[i][0], TESTCASES[i][1], TESTCASES[i][2]));
 
         System.out.println("정답률 = " + (int) (correctCount / TESTCASES.length * 100) + "%");
     }
@@ -28,6 +23,19 @@ public class Main {
         return res;
     }
 
+    private static int solution(int first, int second) {
+        return flipNumber(flipNumber(first) + flipNumber(second));
+    }
 
-    // solution
+    private static int flipNumber(int input) {
+        String result = "";
+        String inputString = String.valueOf(input);
+        String[] splittedString = inputString.split("");
+
+        for (int i = 0; i < splittedString.length; i++) {
+            result += splittedString[splittedString.length - i - 1];
+        }
+
+        return Integer.parseInt(result);
+    }
 }
